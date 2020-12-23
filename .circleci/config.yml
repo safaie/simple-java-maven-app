@@ -8,9 +8,7 @@ jobs:
     executor: maven/default
     steps:
       - run: echo "checking maven version"
-      - run: maven/mvn --version
-      - run: echo "maven package"
-      - maven/mvn: -B -DskipTests clean package
+      - maven/mvn --version
   test:
     docker:
       - image: 'cimg/openjdk:15.0.1'
