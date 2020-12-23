@@ -5,14 +5,12 @@ orbs:
 
 jobs:
   build:
-    docker:
-      - image: 'cimg/openjdk:15.0.1'
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    executor: maven/default
     steps:
-      - run:
-          command: maven/mvn -B -DskipTests clean package
+      - run: echo "checking maven version"
+      - run: maven/mvn --version
+      - run: echo "maven package"
+      - maven/mvn: -B -DskipTests clean package
   test:
     docker:
       - image: 'cimg/openjdk:15.0.1'
