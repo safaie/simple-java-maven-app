@@ -8,4 +8,4 @@ workflows:
     jobs:
       - maven/build:
               command: '-B -DskipTests clean package'
-      - maven/test:
+      - maven/test
