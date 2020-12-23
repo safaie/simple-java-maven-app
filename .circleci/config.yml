@@ -6,6 +6,4 @@ orbs:
 workflows:
   build-and-test:
     jobs:
-      - maven/build:
-              command: '-B -DskipTests clean package'
       - maven/test
