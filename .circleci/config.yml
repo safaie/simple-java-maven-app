@@ -7,18 +7,27 @@ jobs:
   build:
     docker:
       - image: 'cimg/openjdk:15.0.1'
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - run:
           command: maven/mvn -B -DskipTests clean package
   test:
     docker:
       - image: 'cimg/openjdk:15.0.1'
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - run:
           command: maven/mvn test
   deliver:
     docker:
       - image: 'cimg/openjdk:15.0.1'
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - run:
           command: ./jenkins/scripts/deliver.sh
